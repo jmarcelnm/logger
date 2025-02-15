@@ -1,0 +1,38 @@
+{
+  "name": "logger",
+  "version": "1.0.0",
+  "description": "A lightweight and customizable logging library for Node.js applications. This library supports various log levels, output formats, and configuration options to make logging simple and effective.",
+  "main": "logger.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint . --config ./eslint.config.js",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmarcelnm/logger.git"
+  },
+  "author": "jmarcelnm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmarcelnm/logger/issues"
+  },
+  "homepage": "https://github.com/jmarcelnm/logger#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "globals": "^15.15.0",
+    "install": "^0.13.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.1"
+  },
+  "keywords": [
+    "logger",
+    "logging",
+    "nodejs",
+    "lightweight",
+    "customizable"
+  ]
+}
