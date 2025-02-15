@@ -1,7 +1,11 @@
+const fs = require('fs')
+const path = require('path')
+
 class Logger {
-  constructor({ level = 'info', format = 'text' } = {}) {
+  constructor({ level = 'info', format = 'text', filePath = null } = {}) {
     this.level = level
     this.format = format
+    this.filePath = filePath
 
     this.levels = {
       error: 0,
@@ -15,6 +19,14 @@ class Logger {
     if (this.levels[level] <= this.levels[this.level]) {
       const formattedMsg = this.formatMessage(level, message)
       console.log(formattedMsg)
+
+      if (this.filePath) {
+        fs.appendFileSync(
+          path.resolve(this.filePath),
+          formattedMsg + '\\n',
+          'utf8'
+        )
+      }
     }
   }
 
