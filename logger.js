@@ -21,11 +21,8 @@ class Logger {
       console.log(formattedMsg)
 
       if (this.filePath) {
-        fs.appendFileSync(
-          path.resolve(this.filePath),
-          formattedMsg + '\\n',
-          'utf8'
-        )
+        const fileMessage = this.format === 'json' ? `${formattedMsg}\n` : formattedMsg + '\n'
+        fs.appendFileSync(path.resolve(this.filePath), fileMessage, 'utf8')
       }
     }
   }
