@@ -24,12 +24,14 @@ A lightweight and customizable logging library for Node.js applications. This li
 ### Setting Up the Project
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/jmarcelnm/logger.git
    cd lightweight-logger
    ```
 
 2. Build the Docker image:
+
    ```bash
    docker-compose build
    ```
@@ -42,6 +44,7 @@ A lightweight and customizable logging library for Node.js applications. This li
 ### Running Tests
 
 To run tests using Jest:
+
 ```bash
 docker-compose run app sh -c "npm test"
 ```
@@ -51,16 +54,16 @@ docker-compose run app sh -c "npm test"
 Import the logger into your project and configure it as needed:
 
 ```javascript
-const Logger = require('./logger');
+const Logger = require('./logger')
 
 const logger = new Logger({
   level: 'info',
   format: 'json',
-});
+})
 
-logger.info('This is an info message');
-logger.error('This is an error message');
-logger.debug('This debug message will be suppressed in production');
+logger.info('This is an info message')
+logger.error('This is an error message')
+logger.debug('This debug message will be suppressed in production')
 ```
 
 ## Roadmap
