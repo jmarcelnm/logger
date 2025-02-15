@@ -2,7 +2,11 @@ const fs = require('fs')
 const path = require('path')
 
 class Logger {
-  constructor({ level = 'info', format = 'text', filePath = null } = {}) {
+  constructor({
+    level = process.env.NODE_ENV === 'production' ? 'warn' : 'debug',
+    format = 'text',
+    filePath = null,
+  } = {}) {
     this.level = level
     this.format = format
     this.filePath = filePath
@@ -21,7 +25,8 @@ class Logger {
       console.log(formattedMsg)
 
       if (this.filePath) {
-        const fileMessage = this.format === 'json' ? `${formattedMsg}\n` : formattedMsg + '\n'
+        const fileMessage =
+          this.format === 'json' ? `${formattedMsg}\n` : formattedMsg + '\n'
         fs.appendFileSync(path.resolve(this.filePath), fileMessage, 'utf8')
       }
     }
