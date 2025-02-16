@@ -27,7 +27,7 @@ A lightweight and customizable logging library for Node.js applications. This li
 
    ```bash
    git clone https://github.com/jmarcelnm/logger.git
-   cd lightweight-logger
+   cd logger
    ```
 
 2. Build the Docker image:
