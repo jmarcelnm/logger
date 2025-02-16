@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const chalk = require('chalk')
+const { applyColor, formatMessage } = require('./utils/formatter')
 
 class Logger {
   constructor({
@@ -24,10 +24,10 @@ class Logger {
 
   log(level, message) {
     if (this.levels[level] <= this.levels[this.level]) {
-      let formattedMsg = this.formatMessage(level, message)
+      let formattedMsg = formatMessage(level, message)
 
       if (this.colorize && this.format !== 'json') {
-        formattedMsg = this.applyColor(level, formattedMsg)
+        formattedMsg = applyColor(level, formattedMsg)
       }
 
       console.log(formattedMsg)
@@ -37,35 +37,6 @@ class Logger {
           this.format === 'json' ? `${formattedMsg}\n` : formattedMsg + '\n'
         fs.appendFileSync(path.resolve(this.filePath), fileMessage, 'utf8')
       }
-    }
-  }
-
-  formatMessage(level, message) {
-    const timestamp = new Date().toISOString()
-
-    if (this.format === 'json') {
-      return JSON.stringify({
-        timestamp,
-        level,
-        message,
-      })
-    }
-
-    return `[${timestamp}] [${level.toUpperCase()}] ${message}`
-  }
-
-  applyColor(level, text) {
-    switch (level) {
-      case 'error':
-        return chalk.red(text)
-      case 'warn':
-        return chalk.yellow(text)
-      case 'info':
-        return chalk.blue(text)
-      case 'debug':
-        return chalk.gray(text)
-      default:
-        return text
     }
   }
 
