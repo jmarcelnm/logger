@@ -1,0 +1,12 @@
+# Ignore artifacts:
+build
+coverage
+
+# Version control:
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+
+# Other
+README.md
