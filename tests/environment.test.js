@@ -25,7 +25,7 @@ describe('Environment-based logging', () => {
 
     expect(console.log).toHaveBeenCalledTimes(1)
     expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('[WARN] Warning message')
+      expect.stringContaining('[WARN] Warning message'),
     )
   })
 
@@ -38,10 +38,10 @@ describe('Environment-based logging', () => {
 
     expect(console.log).toHaveBeenCalledTimes(2)
     expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('[DEBUG] Debug message')
+      expect.stringContaining('[DEBUG] Debug message'),
     )
     expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('[INFO] Info message')
+      expect.stringContaining('[INFO] Info message'),
     )
   })
 })

@@ -11,7 +11,7 @@ describe('Logger', () => {
   it('logs an info message', () => {
     logger.info('This is an info message')
     expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('[INFO] This is an info message')
+      expect.stringContaining('[INFO] This is an info message'),
     )
   })
 
@@ -24,7 +24,7 @@ describe('Logger', () => {
     logger.level = 'debug'
     logger.debug('Debugging message')
     expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('[DEBUG] Debugging message')
+      expect.stringContaining('[DEBUG] Debugging message'),
     )
   })
 
@@ -32,7 +32,7 @@ describe('Logger', () => {
     logger = new Logger({ format: 'json' })
     logger.info('Testing JSON format')
     expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('"message":"Testing JSON format"')
+      expect.stringContaining('"message":"Testing JSON format"'),
     )
   })
 })

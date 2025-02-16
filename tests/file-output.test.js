@@ -19,13 +19,13 @@ describe('Logger with file output', () => {
     logger.info('File output test')
 
     expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('File output test')
+      expect.stringContaining('File output test'),
     )
 
     expect(fs.appendFileSync).toHaveBeenCalledWith(
       expect.stringContaining('logs/app.log'),
       expect.stringContaining('File output test'),
-      'utf8'
+      'utf8',
     )
   })
 
@@ -34,7 +34,7 @@ describe('Logger with file output', () => {
     logger.info('No file output test')
 
     expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('No file output test')
+      expect.stringContaining('No file output test'),
     )
 
     expect(fs.appendFileSync).not.toHaveBeenCalled()
