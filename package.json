@@ -34,5 +34,8 @@
     "nodejs",
     "lightweight",
     "customizable"
-  ]
+  ],
+  "dependencies": {
+    "chalk": "^5.4.1"
+  }
 }

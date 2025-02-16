@@ -1,15 +1,18 @@
 const fs = require('fs')
 const path = require('path')
+const chalk = require('chalk')
 
 class Logger {
   constructor({
     level = process.env.NODE_ENV === 'production' ? 'warn' : 'debug',
     format = 'text',
     filePath = null,
+    colorize = true,
   } = {}) {
     this.level = level
     this.format = format
     this.filePath = filePath
+    this.colorize = colorize
 
     this.levels = {
       error: 0,
@@ -21,7 +24,12 @@ class Logger {
 
   log(level, message) {
     if (this.levels[level] <= this.levels[this.level]) {
-      const formattedMsg = this.formatMessage(level, message)
+      let formattedMsg = this.formatMessage(level, message)
+
+      if (this.colorize && this.format !== 'json') {
+        formattedMsg = this.applyColor(level, formattedMsg)
+      }
+
       console.log(formattedMsg)
 
       if (this.filePath) {
@@ -44,6 +52,21 @@ class Logger {
     }
 
     return `[${timestamp}] [${level.toUpperCase()}] ${message}`
+  }
+
+  applyColor(level, text) {
+    switch (level) {
+      case 'error':
+        return chalk.red(text)
+      case 'warn':
+        return chalk.yellow(text)
+      case 'info':
+        return chalk.blue(text)
+      case 'debug':
+        return chalk.gray(text)
+      default:
+        return text
+    }
   }
 
   error(message) {
