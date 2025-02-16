@@ -32,7 +32,7 @@ describe('Logger', () => {
     logger = new Logger({ format: 'json' })
     logger.info('Testing JSON format')
     expect(console.log).toHaveBeenCalledWith(
-      expect.stringContaining('"message":"Testing JSON format"'),
+      expect.stringContaining('[INFO] Testing JSON format'),
     )
   })
 })
